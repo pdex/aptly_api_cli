@@ -15,9 +15,9 @@ from distutils.core import setup
 setup(
     name='Aptly-Api-Cli',
     version='0.2dev',
-    requires=[
-      'requests (==2.6.0)',
-      'simplejson (==3.3.2)',
+    install_requires=[
+      'requests >= 2.6.0',
+      'simplejson >= 3.3.2',
     ],
     url='https://github.com/TimSusa/aptly_api_cli',
     license='MIT',

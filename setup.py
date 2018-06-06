@@ -1,12 +1,24 @@
-try:
-    from setuptools import setup, find_packages
-    from pkg_resources import Requirement, resource_filename
-except ImportError:
-    from distutils.core import setup, find_packages
+'''
+This python command line interface, executes calls to the Aptly server
+remotely, without blocking the Aptly database. All functionality from here
+http://www.aptly.info/doc/api/ is extended by even more useful features, like
+showing or cleaning out snapshots, packages for couple of repos or mirrors.
+
+You can make either use of the aptly_api_request.py as a starting point for
+your own application or just use the cli (aptly_api_cli.py) bundled with this
+repository to execute your requests via command line or run scripts, calling
+the cli, integrated into a CI Workflow.
+'''
+
+from distutils.core import setup
 
 setup(
     name='Aptly-Api-Cli',
-    version='0.1',
+    version='0.2dev',
+    requires=[
+      'requests (==2.6.0)',
+      'simplejson (==3.3.2)',
+    ],
     url='https://github.com/TimSusa/aptly_api_cli',
     license='MIT',
     keywords="aptly aptly-server debian",
@@ -14,20 +26,7 @@ setup(
     author_email='timsusa@gmx.de',
     description='This cli executes remote calls to the Aptly server, without blocking the Aptly database.',
     long_description=__doc__,
-    packages=find_packages(),
-    package_dir={'aptly_cli': 'aptly_cli'},
-    # packages=['aptly_cli', 'aptly_cli.api', 'aptly_cli.cli', 'aptly_cli.util'],
-    # py_modules=['aptly_cli.api.api', 'cli'],
-    entry_points={
-        'console_scripts': [
-            'aptly-cli=aptly_cli.cli.cli:main'
-        ]
-    },
-    # data_files=[
-    #     ('configs', ['configs/aptly-cli.conf']),
-    # ],
-    # package_data={'configs': ['aptly_cli/configs/aptly-cli.conf']},
+    packages=['aptly_cli', 'aptly_cli.api', 'aptly_cli.cli', 'aptly_cli.util'],
+    scripts=['./aptly_api_cli'],
     platforms='any'
 )
-
-filename = resource_filename(Requirement.parse("Aptly-Api-Cli"), "configs/aptly-cli.conf")

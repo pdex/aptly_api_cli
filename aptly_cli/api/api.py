@@ -866,7 +866,7 @@ class AptlyApiRequests(object):
         else:
             fo = True
 
-        url = self.cfg['route_pub'] + 's3:' + prefix + ':/' + dist
+        url = self.cfg['route_pub'] + 's3:' + prefix + '/' + dist
 
         snap_list_obj = []
         is_array = isinstance(snapshot_list, list)

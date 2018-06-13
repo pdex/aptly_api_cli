@@ -14,7 +14,7 @@ from distutils.core import setup
 
 setup(
     name='Aptly-Api-Cli',
-    version='0.3dev',
+    version='0.3',
     install_requires=[
       'requests >= 2.6.0',
       'simplejson >= 3.3.2',
